@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ToDo API Client Sample</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Therefore JSON Client Sample</a>
+        </div>
+    </div>
+    <div id="main" class="container">
+<table class="table table-striped">
+    <tr><td style="width: 1px;"><b>#</b></td><td><b>Status</b></td><td><b>Subject</b></td><td><b>Start&nbsp;Date</b></td><td><b>Due&nbsp;Date</b></td><td><b>Created&nbsp;By</b></td><td><b>Assigned&nbsp;To</b></td><td><b>Last&nbsp;Change</b></td><td><b>Options</b></td></tr>
+    <!-- ko foreach: tasks -->
+	<tr>
+		<td><p data-bind="text: TaskNo"></p></td>
+        <td>
+            <span data-bind="visible: Status() == 1" class="label">Not Started</span>
+            <span data-bind="visible: Status() == 2" class="label label-info">In Progress</span>
+			<span data-bind="visible: Status() == 3" class="label label-important">Waiting</span>
+			<span data-bind="visible: Status() == 4" class="label label-warning">Deferred</span>
+			<span data-bind="visible: Status() == 5" class="label label-success">Completed</span>
+			<span data-bind="visible: Status() == 6" class="label label-inverse">Revoked</span>
+        </td>
+        <td><p><b data-bind="text: Subject"></b></p></td>
+		<td><p data-bind="text: StartDate"></p></td>
+		<td><p data-bind="text: DueDate"></p></td>
+		<td><p data-bind="text: CreatedBy"></p></td>
+		<td><p data-bind="text: AssignedToName"></p></td>
+		<td><p data-bind="text: LastUpdate"></p></td>
+        <td style="width: 150px;">
+            <button data-bind="click: $parent.remove" class="btn">Delete</button>
+            <span data-bind="visible: Status() == 1">
+                <button data-bind="click: $parent.markInProgress" class="btn">Start</button>
+            </span>
+        </td>
+    </tr>
+	<!-- /ko -->
+</table>
+<button data-bind="click: beginAdd" class="btn">Add Task</button>
+</div>
+	
+<div id="add" class="modal hide fade" tabindex="=1" role="dialog" aria-labelledby="addDialogLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="addDialogLabel">New Task</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+			<div class="control-group">
+                <label class="control-label" for="inputDocNo">Document #</label>
+                <div class="controls">
+                    <input data-bind="value: DocNo" type="text" id="inputDocNo" placeholder="Doc Number" style="width: 100px;">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputSubject">Subject</label>
+                <div class="controls">
+                    <input data-bind="value: Subject" type="text" id="inputSubject" placeholder="Subject Title" style="width: 318px;">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputAssignTo">Assign To</label>
+                <div class="controls">
+                    <input data-bind="value: AssignToUserName" type="text" id="inputAssignTo" placeholder="Full User Name" style="width: 150px;">
+					<input data-bind="value: AssignToDomainName" type="text" id="inputAssignDomain" placeholder="Domain Name" style="width: 150px;">
+                </div>
+            </div>
+			<div class="control-group">
+                <label class="control-label" for="inputStartDate">Start Date</label>
+                <div class="controls">
+                    <input data-bind="value: StartDate" type="text" id="inputStartDate" placeholder="Start Date" style="width: 150px;">
+                </div>
+            </div>
+			<div class="control-group">
+                <label class="control-label" for="inputDueDate">Due Date</label>
+                <div class="controls">
+                    <input data-bind="value: DueDate" type="text" id="inputDueDate" placeholder="Due Date" style="width: 150px;">
+                </div>
+            </div>
+			<div class="control-group">
+                <label class="control-label" for="inputDueDate">Task Mode</label>
+                <div class="controls">
+                    <select data-bind="options: availableTaskModes,
+						optionsText: 'name',
+						value: selectedTaskMode">
+					</select>
+                </div>
+            </div>
+			<div class="control-group">
+				<div class="controls">
+					<label class="checkbox inline">
+						<input data-bind="checked: NotifyOnAssign" type="checkbox" id="inputNotifyOnAssign"> Notify on Assign
+					</label>
+					<label class="checkbox inline">
+						<input data-bind="checked: NotifyOnUpdate" type="checkbox" id="inputNotifyOnUpdate"> Notify on Update
+					</label>
+				</div>
+            </div>
+			<div class="control-group">
+                <label class="control-label" for="inputInstructions">Instructions</label>
+                <div class="controls">
+                    <input data-bind="value: Instructions" type="text" id="inputInstructions" placeholder="Instructions" style="width: 318px;">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button data-bind="click: addTask" class="btn btn-primary">Add Task</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
+</div>
+	
+    <script type="text/javascript">
+
+    function TasksViewModel() {
+        var self = this;
+		
+        self.tasksURI = 'https://vie1sebu3.ados.net:8590/theservice/v0001/restwin/ExecuteTaskInfoQuery';
+        //self.username = "test";
+        //self.password = "*****";
+        self.tasks = ko.observableArray();
+
+        self.ajax = function(uri, method, data) {
+			var request = {
+                url: uri,
+                type: method,
+                contentType: "application/json",
+                accepts: "application/json",
+                cache: false,
+                dataType: 'json',
+				crossDomain: true,
+                data: JSON.stringify(data),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 
+                        "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function(jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                }
+            };
+            return $.ajax(request);
+        }
+
+        self.beginAdd = function() {
+			$('#add').modal('show');
+        }
+        
+        self.remove = function(task) {
+            $.ajax({
+				url: "https://vie1sebu3.ados.net:8590/theservice/v0001/restwin/DeleteTask",
+				type: "POST",
+				contentType: "application/json",
+				accepts: "application/json",
+				cache: false,
+                dataType: 'json',
+				crossDomain: true,
+                data: JSON.stringify({"TaskNo": task.TaskNo()}),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 
+                        "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function(jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                },
+				success: function (msg) {
+					if (msg) {
+						self.tasks.remove(task)
+						alert("Task # " + task.TaskNo() + " has been deleted !");
+					} else {
+						alert("Cannot add to list !");
+					}
+				}
+           });
+        }
+		
+        self.markInProgress = function(task) {
+            $.ajax({
+				url: "https://vie1sebu3.ados.net:8590/theservice/v0001/restwin/SetTaskStatus",
+				type: "POST",
+				contentType: "application/json",
+				accepts: "application/json",
+				cache: false,
+                dataType: 'json',
+				crossDomain: true,
+                data: JSON.stringify({
+					"TaskNo": task.TaskNo(),
+					"TaskStatus": 2 /*InProgressStatus*/
+				}),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 
+                        "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function(jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                },
+				success: function (msg) {
+					if (msg) {
+						alert("Task # " + task.TaskNo() + " has been started !");
+					} else {
+						alert("Cannot start the task !");
+					}
+				}
+           });
+        }
+		
+		self.ajax(self.tasksURI, 'POST', {
+			"MaxRows": 0,
+			"QueryMode": 1,
+			"TaskNo":0,
+			"ViewMode": 0
+		}).done(function(data) {
+            for (var i = 0; i < data.QueryResult.length; i++) {
+                self.tasks.push({
+				
+					TaskNo: ko.observable(data.QueryResult[i].TaskNo),
+					Status: ko.observable(data.QueryResult[i].Status),
+					Subject: ko.observable(data.QueryResult[i].Subject),
+					StartDate: ko.observable(self.convertToDateValue(data.QueryResult[i].StartDate)),
+					DueDate: ko.observable(self.convertToDateValue(data.QueryResult[i].DueDate)),
+					CreatedBy: ko.observable(data.QueryResult[i].CreatedBy),
+					AssignedToName: ko.observable(data.QueryResult[i].AssignedToName),
+					LastUpdate: ko.observable(new Date(parseInt(data.QueryResult[i].LastUpdate.substr(6))))
+                });
+            }
+        })
+		
+		self.add = function(task) {
+            $.ajax({
+				url: "https://vie1sebu3.ados.net:8590/theservice/v0001/restwin/CreateTask",
+				type: "POST",
+				contentType: "application/json",
+				accepts: "application/json",
+				cache: false,
+                dataType: 'json',
+				crossDomain: true,
+                data: JSON.stringify(task),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 
+                        "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function(jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                },
+				success: function (msg) {
+					if (msg) {
+						alert("Task has been added !");
+					} else {
+						alert("Cannot add to list !");
+					}
+				}
+           });
+		}
+
+		self.convertToDateValue = function(date) {
+			if(date == null)
+			{
+				return null;
+			}
+			else
+			{
+			 return new Date(parseInt(date.substr(6)))
+			}
+		}
+	}
+	
+    function AddTaskViewModel() {
+        var self = this;
+		self.DocNo = ko.observable(868);
+        self.Subject = ko.observable("subject 123");
+        self.AssignToUserName = ko.observable("sergiy.bukharin");
+		self.AssignToDomainName = ko.observable("ados");
+		self.StartDate = ko.observable("2014-11-14");
+		self.DueDate = ko.observable("2014-12-14");
+		self.Instructions = ko.observable("instriuicvbfghf gh....");
+		self.NotifyOnAssign = ko.observable(false);
+		self.NotifyOnUpdate = ko.observable(false);
+
+		var OptionItem = function(id, name) {
+			this.id = id;
+			this.name = name;
+		};
+		
+		self.selectedTaskMode = ko.observable(new OptionItem(1,'Complete'));
+		self.availableTaskModes = ko.observableArray([new OptionItem(1,'Complete'), new OptionItem(2,'CompleteDecline'), new OptionItem(3,'ApproveReject'), new OptionItem(4,'YesNo')]);
+
+        self.addTask = function() {
+            $('#add').modal('hide');
+            tasksViewModel.add({
+				Task: {
+					AssignTo: 
+					[{
+						UserName: self.AssignToUserName(),
+						DomainName: self.AssignToDomainName()
+					}],
+				Mode: self.selectedTaskMode().id,
+				DocNo: self.DocNo(),
+				DueDate: self.toMSJSON(new Date(self.DueDate())),
+				Instructions: self.Instructions(),
+				NotifyOnAssign: self.getBool(self.NotifyOnAssign()),
+				NotifyOnUpdate: self.getBool(self.NotifyOnUpdate()),
+				StartDate: self.toMSJSON(new Date(self.StartDate())),
+				Subject: self.Subject()
+				}
+			});
+        }
+		
+		self.getBool = function(boolvar) {
+			if(boolvar == null)
+			{
+				return false;
+			}
+			else
+			{
+			 return boolvar;
+			}
+		}
+		
+		self.toMSJSON = function (date) {
+			var date = '/Date(' + date.getTime() + ')/';
+			return date;
+		}
+    }
+
+    var tasksViewModel = new TasksViewModel();
+    var addTaskViewModel = new AddTaskViewModel();
+    ko.applyBindings(tasksViewModel, $('#main')[0]);
+    ko.applyBindings(addTaskViewModel, $('#add')[0]);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E161F0C-3645-40CD-92DA-7187B923AC34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharedServiceReference</RootNamespace>
+    <AssemblyName>SharedServiceReference</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientConnection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceRef_Update_it\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.AddDictionaryKeywordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.AddStreamsToDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ClaimWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.CloseCaseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.CompleteTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.CreateCaseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.CreateDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.CreateLinkFileResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DelegateWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DeleteCaseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DeleteDictionaryKeywordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DeleteDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DeleteTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DeleteWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.DisclaimWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.EraseAllObjectsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.EraseObjectResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteAsyncFullTextQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteAsyncMultiQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteAsyncSingleQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteDependentFieldsQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteFullTextQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteMultiQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteSimpleQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteSingleQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteTaskInfoQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteUsersQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteWorkflowQueryForAllResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ExecuteWorkflowQueryForProcessResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.FillDependentFieldsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.FinishCurrentWorkflowTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetAllTreeViewsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCaseDefinitionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCaseDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCaseHistoryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCaseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCategoriesTreeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetCategoryInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetConnectedUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetConnectionTokenResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetConvertedDocStreamsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDictionaryInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDocumentCheckoutStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDocumentIndexDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDocumentPropertiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDocumentStreamResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetDomainInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetKeywordsByFieldNoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetLinkedObjectsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetLinkedWorkflowsForDocResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetNextFullTextQueryRowsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetNextMultiQueryRowsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetNextSingleQueryRowsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetObjectRightsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetObjectsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetPermissionConstantsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetQuerySpecificationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetReportDefinitionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetSettingIntResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetSettingStringResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetTaskInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetThumbnailResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetTreeViewChildNodesAndDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetTreeViewChildNodesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetTreeViewNodeDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetWebAPIServerVersionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.GetWorkflowProcessResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.HasPermissionsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.LinkDocAndWFInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.LinkDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ReleaseFullTextQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ReleaseMultiQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ReleaseSingleQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ReopenCaseResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SaveCaseIndexDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SaveDocumentIndexDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SetChecklistItemWorkflowResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SetTaskStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SetTextInfoWorkflowResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.StartCreateDocumentBatchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.StartTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.StartUpdateDocumentBatchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.StartWorkflowInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SubmitCreateDocumentBatchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.SubmitUpdateDocumentBatchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UnlinkDocAndWFInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UnlinkDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UpdateDictionaryKeywordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UpdateDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UpdateTaskCommentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UpdateTaskResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.UploadDocStreamToBatchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\SharedServiceReference.ServiceRef_Update_it.ValidateKeywordsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceRef_Update_it\ThereforeService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj">
+      <Project>{91c3b562-eb93-4694-8f75-2c5687e2ffd3}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceRef_Update_it\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceRef_Update_it\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceRef_Update_it\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceRef_Update_it\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

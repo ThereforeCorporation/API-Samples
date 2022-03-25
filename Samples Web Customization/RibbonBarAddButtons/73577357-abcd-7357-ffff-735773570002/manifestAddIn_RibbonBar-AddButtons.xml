@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<the:ThereforeAddIn
+  xmlns:the="http://schemas.therefore.net/thereforeaddinmanifest/0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.therefore.net/thereforebasictypes/0.1">
+  <Id>73577357-abcd-7357-ffff-735773570002</Id>
+  <Version>0.1</Version>
+  <ProviderName>Therefore</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Test RibbonBar-AddButtons" />
+  <Description DefaultValue="The Description" />
+  <IconUrl DefaultValue="/TWA/Client/Images/therefore_32.png" />
+  <Hosts>
+    <Host xsi:type="the:Navigator">
+      <DesktopFormFactor>
+        <FunctionFile resid="Therefore.FunctionFile.Url"/>
+        <ExtensionPoint xsi:type="the:NavigatorRibbonBar">
+          <Tab id="theRibbonTabHOME">
+            <Group id="Therefore.NewGroup1">
+              <Label resid="Therefore.NewGroup1.Label"/>
+              <Control xsi:type="the:Button" id="Therefore.Button1">
+                <Label resid="Therefore.Button1.Label"/>
+                <Tooltip resid="Therefore.Button1.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>button1Click</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="the:Button" id="Therefore.Button2">
+                <Label resid="Therefore.Button2.Label"/>
+                <Tooltip resid="Therefore.Button2.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>button2Click</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </Tab>
+          <CustomTab id="Therefore.CustomTab1">
+            <Label resid="Therefore.CustomTab1.Label"/>
+            <Group id="Therefore.NewGroup2">
+              <Label resid="Therefore.NewGroup2.Label"/>
+              <Control xsi:type="the:Button" id="Therefore.Button3">
+                <Label resid="Therefore.Button3.Label"/>
+                <Tooltip resid="Therefore.Button3.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>button3Click</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </CustomTab>
+        </ExtensionPoint>
+        <ExtensionPoint xsi:type="the:ViewerRibbonBar">
+          <Tab id="theRibbonTabVIEW">
+            <Group id="Therefore.NewGroup3">
+              <Label resid="Therefore.NewGroup3.Label"/>
+              <Control xsi:type="the:Button" id="Therefore.Button4">
+                <Label resid="Therefore.Button4.Label"/>
+                <Tooltip resid="Therefore.Button4.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>button4Click</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </Tab>
+          <CustomTab id="Therefore.CustomTab2">
+            <Label resid="Therefore.CustomTab2.Label"/>
+            <Group id="Therefore.NewGroup4">
+              <Label resid="Therefore.NewGroup4.Label"/>
+              <Control xsi:type="the:Button" id="Therefore.Button5">
+                <Label resid="Therefore.Button5.Label"/>
+                <Tooltip resid="Therefore.Button5.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>button5Click</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </CustomTab>
+        </ExtensionPoint>
+      </DesktopFormFactor>
+    </Host>
+  </Hosts>
+  <Resources>
+    <bt:Images>
+      <bt:Image id="Therefore.Button.Image" DefaultValue="/TWA/Client/Images/ribbon_workflow_instance_process_32.png" />
+      <bt:Image id="Therefore.Button.ImageDisabled" DefaultValue="/TWA/Client/Images/ribbon_disabled_workflow_instance_process_32.png" />
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="Therefore.FunctionFile.Url" DefaultValue="/TWA/Client/AddIn/TWA/73577357-abcd-7357-ffff-735773570002/FunctionFile.html" />
+    </bt:Urls>
+    <bt:ShortStrings>
+      <bt:String id="Therefore.CustomTab1.Label" DefaultValue="CustomTab1" />
+      <bt:String id="Therefore.CustomTab2.Label" DefaultValue="CustomTab2" />
+      <bt:String id="Therefore.NewGroup1.Label" DefaultValue="NewGroup1" />
+      <bt:String id="Therefore.NewGroup2.Label" DefaultValue="NewGroup2" />
+      <bt:String id="Therefore.NewGroup3.Label" DefaultValue="NewGroup3" />
+      <bt:String id="Therefore.NewGroup4.Label" DefaultValue="NewGroup4" />
+      <bt:String id="Therefore.Button1.Label" DefaultValue="Button1" />
+      <bt:String id="Therefore.Button2.Label" DefaultValue="Button2" />
+      <bt:String id="Therefore.Button3.Label" DefaultValue="Button3" />
+      <bt:String id="Therefore.Button4.Label" DefaultValue="Button4" />
+      <bt:String id="Therefore.Button5.Label" DefaultValue="Button5" />
+    </bt:ShortStrings>
+    <bt:LongStrings>
+      <bt:String id="Therefore.Button1.Tooltip" DefaultValue="Button1 Tooltip" />
+      <bt:String id="Therefore.Button2.Tooltip" DefaultValue="Button2 Tooltip" />
+      <bt:String id="Therefore.Button3.Tooltip" DefaultValue="Button3 Tooltip" />
+      <bt:String id="Therefore.Button4.Tooltip" DefaultValue="Button4 Tooltip" />
+      <bt:String id="Therefore.Button5.Tooltip" DefaultValue="Button5 Tooltip" />
+    </bt:LongStrings>
+  </Resources>
+</the:ThereforeAddIn>

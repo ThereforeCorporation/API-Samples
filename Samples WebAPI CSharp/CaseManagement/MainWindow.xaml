@@ -1,0 +1,43 @@
+﻿<Window x:Class="CaseManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Case Management Sample" MinHeight="370" MinWidth="840" Height="504" Width="840" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <GroupBox Header="Case Definition Handling" Height="93" HorizontalAlignment="Left" Margin="12,12,0,0" Name="gb_case_definition_handling" VerticalAlignment="Top" Width="390">
+            <Grid>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="123,8,0,0" Name="txt_casedefno" VerticalAlignment="Top" Width="60" />
+                <Label Content="Case Definition ID: " Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label1" VerticalAlignment="Top" />
+                <Button Content="Header Fields" Height="23" HorizontalAlignment="Left" Margin="241,8,0,0" Name="btn_header_fields" VerticalAlignment="Top" Width="120" Click="btn_header_fields_Click" />
+                <Button Content="Categories" Height="23" HorizontalAlignment="Left" Margin="241,37,0,0" Name="btn_categories" VerticalAlignment="Top" Width="120" Click="btn_categories_Click" />
+                <Button Content="Selection Dialog" Height="23" HorizontalAlignment="Left" Margin="63,37,0,0" Name="button1" VerticalAlignment="Top" Width="120" Click="button1_Click" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Case Instance Handling" Height="171" HorizontalAlignment="Left" Margin="12,183,0,0" Name="gb_case_instance_handling" VerticalAlignment="Top" Width="390">
+            <Grid Height="136">
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="123,8,0,0" Name="txt_caseno" VerticalAlignment="Top" Width="60" />
+                <Label Content="Case ID: " Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label2" VerticalAlignment="Top" />
+                <Button Content="Header Index Data" Height="23" HorizontalAlignment="Left" Margin="63,40,0,0" Name="btn_header_indexdata" VerticalAlignment="Top" Width="120" Click="btn_header_indexdata_Click" />
+                <Label Content="Category ID: " Height="28" HorizontalAlignment="Left" Margin="202,6,0,0" Name="label3" VerticalAlignment="Top" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="301,8,0,0" Name="txt_catno" VerticalAlignment="Top" Width="60" />
+                <Button Height="52" HorizontalAlignment="Left" Margin="241,40,0,0" Name="btn_doc_for_cat" VerticalAlignment="Top" Width="120" Click="btn_doc_for_cat_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center">Documents for Category</TextBlock>
+                </Button>
+                <Button Content="Show History" Height="23" HorizontalAlignment="Left" Margin="63,98,0,0" Name="btn_show_history" VerticalAlignment="Top" Width="120" Click="btn_show_history_Click" />
+            </Grid>
+        </GroupBox>
+        <TextBox MinHeight="300"  Margin="415,12,12,14" Name="txt_output"  MinWidth="340" />
+        <GroupBox Header="Case Query" Height="93" HorizontalAlignment="Left" Margin="12,360,0,0" Name="groupBox1" VerticalAlignment="Top" Width="390">
+            <Grid>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="123,12,0,0" Name="txt_query_casedefno" VerticalAlignment="Top" Width="60" />
+                <Label Content="Case Definition ID: " Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" Name="label4" VerticalAlignment="Top" />
+                <Button Content="Query All" Height="23" HorizontalAlignment="Left" Margin="241,15,0,0" Name="btn_query_all" VerticalAlignment="Top" Width="120" Click="btn_query_all_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Create New Case" Height="66" HorizontalAlignment="Left" Margin="12,111,0,0" Name="gb_case_create" VerticalAlignment="Top" Width="390">
+            <Grid>
+                <Button Content="Create new Case" Height="23" HorizontalAlignment="Left" Margin="63,6,0,0" Name="btn_create" VerticalAlignment="Top" Width="120" Click="btn_create_Click" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

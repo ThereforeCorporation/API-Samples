@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<the:ThereforeAddIn
+  xmlns:the="http://schemas.therefore.net/thereforeaddinmanifest/0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.therefore.net/thereforebasictypes/0.1">
+  <Id>73577357-abcd-7357-ffff-735773570005</Id>
+  <Version>0.1</Version>
+  <ProviderName>Therefore</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Add-in XML Web Service under WebViewer" />
+  <Description DefaultValue="Add-in Template: WebApi demo - get current object info under WebViewer" />
+  <IconUrl DefaultValue="/TWA/Client/Images/therefore_32.png" />
+  <Hosts>
+    <Host xsi:type="the:Navigator">
+      <DesktopFormFactor>
+        <FunctionFile resid="Therefore.FunctionFile.Url"/>
+          <ExtensionPoint xsi:type="the:ViewerRibbonBar">
+            <Tab id="theRibbonTabHOME">
+              <Group id="Therefore.GroupXmlService">
+                <Label resid="Therefore.GroupXmlService.Label"/>
+                <Control xsi:type="the:Button" id="Therefore.ButtonGetFile">
+                  <Label resid="Therefore.ButtonGetFile.Label"/>
+                  <Tooltip resid="Therefore.ButtonGetFile.Tooltip"/>
+                  <Icon>
+                    <bt:Image size="32" resid="Therefore.Button.Image"/>
+                    <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                  </Icon>
+                  <Action xsi:type="the:ExecuteFunction">
+                    <FunctionName>getCurrentObjectFileFromXmlWebService</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </Tab>
+          </ExtensionPoint>
+      </DesktopFormFactor>
+    </Host>
+  </Hosts>
+  <Resources>
+    <bt:Images>
+      <bt:Image id="Therefore.Button.Image" DefaultValue="/TWA/Client/Images/ribbon_workflow_instance_process_32.png" />
+      <bt:Image id="Therefore.Button.ImageDisabled" DefaultValue="/TWA/Client/Images/ribbon_disabled_workflow_instance_process_32.png" />
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="Therefore.FunctionFile.Url" DefaultValue="/TWA/Client/AddIn/TWA/73577357-abcd-7357-ffff-735773570005/FunctionFile.html" />
+    </bt:Urls>
+    <bt:ShortStrings>
+        <bt:String id="Therefore.GroupXmlService.Label" DefaultValue="Xml Web Service" />
+      <bt:String id="Therefore.ButtonGetFile.Label" DefaultValue="Get Info" />
+    </bt:ShortStrings>
+    <bt:LongStrings>
+      <bt:String id="Therefore.ButtonGetFile.Tooltip" DefaultValue="Get Current Object File Size Tooltip" />
+    </bt:LongStrings>
+  </Resources>
+</the:ThereforeAddIn>

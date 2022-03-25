@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="//cdn.jsdelivr.net/bluebird/3.4.5/bluebird.js"></script>
+    <script src="[[THEJSADDINPATH]]"></script>
+    <script>
+        //Helper function to generate Promise object for the AddIn framework methods
+        function promisify(action) {
+            var args = arguments;
+            return new Promise(function (resolve, reject) {
+                var callback = function (result) {
+                    if (!result)
+                        resolve();
+                    else if (result.status == "failed") {
+                        reject(result.error);
+                    }
+                    else {
+                        resolve(result);
+                    }
+                };
+
+                var params = [];
+                if (args[1]) {
+                    params = Array.prototype.slice.call(args[1]);
+                }
+                params.push(callback);
+
+                action.apply(this, params);
+            });
+        };
+
+        var getTableColumnValuesAsync = function () {
+            return promisify(Therefore.context.categoryDialog.getTableColumnValues, arguments);
+        }
+        var setFieldValueAsync = function () {
+            return promisify(Therefore.context.categoryDialog.setFieldValue, arguments);
+        }
+        var getFieldValueAsync = function () {
+            return promisify(Therefore.context.categoryDialog.getFieldValue, arguments);
+        }
+        var setFieldBgColorAsync = function () {
+            return promisify(Therefore.context.categoryDialog.setFieldBgColor, arguments);
+        }
+
+        function calcFunctionTableSumVal(args) {
+            console.log(args);
+            var calcSum = 0;
+
+            //Only do calculations if function is called by specific fields. For "Table Columns" you have to use "indexOf"
+            if (args.id.indexOf("[[ColumnMoneyPos]]") == -1 &&
+                args.id != "[[FieldMoneyCalcSum]]" &&
+                args.id != "[[FieldMoneyTotal]]" &&
+                args.id != "FieldPanel")
+                return;
+
+            getTableColumnValuesAsync(["[[FieldTable]]", "[[ColumnMoneyPos]]"])
+                .then(function (values) {
+                    if (!values || (values && values.length == 0))
+                        return Promise.reject(new Error("no cell values"));
+                    for (var i = 0; i < values.length; i++) {
+                        calcSum += +values[i];
+                    }
+
+                    return setFieldValueAsync("[[FieldMoneyCalcSum]]", calcSum);
+                })
+                .then(function () {
+                    return getFieldValueAsync("[[FieldMoneyTotal]]");
+                })
+                .then(function (moneyTotalValue) {
+                    var dif = calcSum - moneyTotalValue;
+                    var color;
+                    if (dif > 0)
+                        color = "#7FFF7F";
+                    else if (dif < 0)
+                        color = "#FF7F7F";
+                    else if (dif == 0)
+                        color = "#9F9FFF";
+                    else
+                        color = "#FFFFFF";
+
+                    return setFieldBgColorAsync("[[FieldMoneyTotal]]", color);
+                })
+                .catch(function (e) {
+                    console.log("error: " + e.message);
+                    console.log(e);
+                    return setFieldValueAsync("[[FieldMoneyCalcSum]]", "");
+                })
+                .catch(function (e) {
+                    console.log("error: " + e.message);
+                    console.log(e);
+                });
+        }
+    </script>
+</head>
+<body>
+    body of function files wont be displayed
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OldClient_Net20.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OldClient_Net20_ServiceRef_Update_it__ThereforeService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://therefore-server-name:8000/theservice/v0001/soapun</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

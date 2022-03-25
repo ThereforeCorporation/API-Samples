@@ -1,0 +1,28 @@
+﻿<Window x:Class="Therefore.Samples.CaseDefinitionPropertiesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:vm="clr-namespace:Therefore.Samples"
+        xmlns:api="clr-namespace:Therefore.API"
+        Title="CaseDefinitionPropertiesWindow" Height="206" Width="566" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="FolderNo" HorizontalAlignment="Left" Margin="298,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.017,0.462"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="298,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="DocumentTitleLength" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="WorkflowProcessNo" HorizontalAlignment="Left" Margin="298,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Height" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Width" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Name}" Name="txt_name" HorizontalAlignment="Left" Height="23" Margin="156,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding Width}" Name="txt_width" HorizontalAlignment="Left" Height="23" Margin="156,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding Height}" Name="txt_height" HorizontalAlignment="Left" Height="23" Margin="156,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding FolderNo}" Name="txt_folderno" HorizontalAlignment="Left" Height="23" Margin="426,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding WorkflowProcessNo}" Name="txt_workflowprocessno" HorizontalAlignment="Left" Height="23" Margin="426,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding DocumentTitleLength}" Name="txt_documenttitlelength" HorizontalAlignment="Left" Height="23" Margin="156,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding Description}" Name="txt_description" HorizontalAlignment="Left" Height="23" Margin="426,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btn_close" Content="Close" HorizontalAlignment="Left" Margin="471,139,0,0" VerticalAlignment="Top" Width="75" Click="btn_close_Click"/>
+        <Label Content="SubCaseFieldIx" HorizontalAlignment="Left" Margin="298,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,0.5"/>
+        <TextBox IsReadOnly="True" Text="{Binding SubCaseFieldIx, Mode=OneWay}" x:Name="txt_subcasefield" HorizontalAlignment="Left" Height="23" Margin="426,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40"/>
+        <Button Name="btn_change_subcase" Content="Change" HorizontalAlignment="Left" Margin="471,41,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btn_change_subcase_Click"/>
+    </Grid>
+</Window>

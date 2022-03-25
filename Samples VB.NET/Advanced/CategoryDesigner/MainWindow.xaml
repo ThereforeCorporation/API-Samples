@@ -1,0 +1,76 @@
+﻿<Window x:Class="Therefore.Samples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Therefore API Category Designer" Height="420" Width="759" Loaded="Window_Loaded">
+    <Grid>
+        <Button Content="Load" Height="23" HorizontalAlignment="Left" Margin="214,8,0,0" Name="btn_load" VerticalAlignment="Top" Width="75" Click="btn_load_Click" />
+        <Button Content="Create" Height="23" HorizontalAlignment="Left" Margin="294,8,0,0" Name="btn_create" VerticalAlignment="Top" Width="75" Click="btn_create_Click" />
+        <Button Content="Save" Height="23" HorizontalAlignment="Left" Margin="534,8,0,0" x:Name="btn_save" VerticalAlignment="Top" Width="75" Click="btn_save_Click" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="113,45,0,0" Name="cmb_filter_type" VerticalAlignment="Top" Width="244" SelectionChanged="cmb_filter_type_SelectionChanged" />
+        <Label Content="Filter Field Type:" Height="28" HorizontalAlignment="Left" Margin="12,43,0,0" Name="lbl_filter_type" VerticalAlignment="Top" />
+        <DataGrid AutoGenerateColumns="False" MinHeight="236" Margin="0,85,0,40" Name="dg_categoryfields" MinWidth="737"
+                  ItemsSource = "{Binding VisibleFields}"  GridLinesVisibility="None" MouseDoubleClick="dg_categoryfields_MouseDoubleClick"
+                  SelectionMode="Single" SelectionUnit="FullRow" CanUserReorderColumns="False" CanUserResizeColumns="true" CanUserResizeRows="false" IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FieldNo" Binding="{Binding FieldNo}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Column Name" Binding="{Binding ColName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Field Name" Binding="{Binding FieldID}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Caption" Binding="{Binding Caption}"/>
+                <DataGridTextColumn Header="Field Type" Binding="{Binding FieldType}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeNo" Binding="{Binding TypeNo}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="UDD" Binding="{Binding IsForeignDatatype}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Single KW" Binding="{Binding IsSingleKeyword}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Multi KW" Binding="{Binding IsMultipleKeyword}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Belongs To" Binding="{Binding BelongsTo}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Belongs To Table" Binding="{Binding BelongsToTable}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Length" Binding="{Binding Length}"/>
+                <DataGridTextColumn Header="Mandatory" Binding="{Binding Mandatory}"/>
+                <DataGridTextColumn Header="Visible" Binding="{Binding Visible}"/>
+                <DataGridTextColumn Header="Default Value" Binding="{Binding DefaultVal}"/>
+                <DataGridTextColumn Header="Height" Binding="{Binding Height}"/>
+                <DataGridTextColumn Header="Width" Binding="{Binding Width}"/>
+                <DataGridTextColumn Header="PosX" Binding="{Binding PosX}"/>
+                <DataGridTextColumn Header="PosY" Binding="{Binding PosY}"/>
+                <DataGridTextColumn Header="IndexType" Binding="{Binding IndexType}"/>
+                <DataGridTextColumn Header="DontLoadValues" Binding="{Binding DontLoadValues}"/>
+                <DataGridTextColumn Header="CaseSensitive" Binding="{Binding CaseSensitive}"/>
+                <DataGridTextColumn Header="RegularExpression" Binding="{Binding RegularExpr}"/>
+                <DataGridTextColumn Header="WorkflowField" Binding="{Binding WorkflowField}"/>
+                <DataGridTextColumn Header="TabOrderPos" Binding="{Binding TabOrderPos}"/>
+                <DataGridTextColumn Header="DisplayOrderPos" Binding="{Binding DisplayOrderPos}"/>
+                <DataGridTextColumn Header="TypeGroup" Binding="{Binding TypeGroup}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeTableName" Binding="{Binding TypeTableName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeIndexColumn" Binding="{Binding TypeIndexColumn}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeMultiJoin" Binding="{Binding TypeMultiJoin}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeMultiInner" Binding="{Binding TypeMultiInner}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TypeMultiOuter" Binding="{Binding TypeMultiOuter}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="CounterMode" Binding="{Binding CounterMode}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="DependencyMode" Binding="{Binding DependencyMode}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="SelectFromDropDownBox" Binding="{Binding SelectFromDropDownBox}"/>
+                <DataGridTextColumn Header="Formula" Binding="{Binding Formula}"/>
+                <DataGridTextColumn Header="Prop.FaceName" Binding="{Binding DisplayProperties.FaceName}"/>
+                <DataGridTextColumn Header="Prop.Bold" Binding="{Binding DisplayProperties.Bold}"/>
+                <DataGridTextColumn Header="Prop.Italic" Binding="{Binding DisplayProperties.Italic}"/>
+                <DataGridTextColumn Header="Prop.Underlined" Binding="{Binding DisplayProperties.Underlined}"/>
+                <DataGridTextColumn Header="Prop.FontSize" Binding="{Binding DisplayProperties.FontSize}"/>
+                <DataGridTextColumn Header="Prop.TextColor" Binding="{Binding DisplayProperties.TextColor}"/>
+                <DataGridTextColumn Header="Prop.BackgroundColor" Binding="{Binding DisplayProperties.BackgroundColor}"/>
+                <DataGridTextColumn Header="Prop.Padding" Binding="{Binding DisplayProperties.Padding}"/>
+                <DataGridTextColumn Header="Prop.HorizontalAlignment" Binding="{Binding DisplayProperties.HorizontalAlignment}"/>
+                <DataGridTextColumn Header="Prop.VerticalAlignment" Binding="{Binding DisplayProperties.VerticalAlignment}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <RadioButton Content="Only" Height="16" HorizontalAlignment="Left" Margin="362,48,0,0" Name="rdb_filter_type_only" VerticalAlignment="Top" GroupName="rbg_filter_type" Checked="rdb_filter_type_only_Checked" />
+        <RadioButton Content="Exclude" Height="16" HorizontalAlignment="Left" Margin="411,48,0,0" Name="rdb_filter_type_exclude" VerticalAlignment="Top" GroupName="rbg_filter_type" Checked="rdb_filter_type_exclude_Checked" />
+        <RadioButton Content="Show All" Height="16" HorizontalAlignment="Left" Margin="475,48,0,0" Name="rdb_filter_type_all" VerticalAlignment="Top" GroupName="rbg_filter_type" IsChecked="True" Checked="rdb_filter_type_all_Checked" />
+        <Button Content="Create Field" Name="btn_create_field" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Height="23" Click="btn_create_field_Click"/>
+        <Button Content="Delete Field" Name="btn_delete_field" HorizontalAlignment="Left" Margin="100,0,0,10" VerticalAlignment="Bottom" Width="75" Height="23" Click="btn_delete_field_Click"/>
+        <Button Content="Test" Name="btn_test" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Height="23" Click="btn_test_Click"/>
+        <Button Content="Properties" Name="btn_properties" HorizontalAlignment="Left" Margin="374,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btn_properties_Click"/>
+        <RadioButton Content="Category" Name="rdb_category" IsChecked="True" GroupName="rbg_object_type" HorizontalAlignment="Left" Margin="18,13,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Case Definition" x:Name="rdb_casedefinition" GroupName="rbg_object_type" HorizontalAlignment="Left" Margin="100,13,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmb_language" HorizontalAlignment="Left" Margin="641,45,0,0" VerticalAlignment="Top" Width="70" SelectionChanged="cmb_language_SelectionChanged" DisplayMemberPath="Name"/>
+        <Label x:Name="label" Content="Language:" HorizontalAlignment="Left" Margin="577,43,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_translation" Content="Translation" HorizontalAlignment="Left" Margin="454,8,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btn_translation_Click"/>
+    </Grid>
+</Window>

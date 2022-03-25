@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<the:ThereforeAddIn
+  xmlns:the="http://schemas.therefore.net/thereforeaddinmanifest/0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.therefore.net/thereforebasictypes/0.1">
+  <Id>73577357-abcd-7357-ffff-735773570003</Id>
+  <Version>0.1</Version>
+  <ProviderName>Therefore</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Test RibbonBar-ManipulateButtons" />
+  <Description DefaultValue="The Description" />
+  <IconUrl DefaultValue="/TWA/Client/Images/therefore_32.png" />
+  <Hosts>
+    <Host xsi:type="the:Navigator">
+      <DesktopFormFactor>
+        <FunctionFile resid="Therefore.FunctionFile.Url"/>
+        <ExtensionPoint xsi:type="the:NavigatorRibbonBar">
+          <HideList>
+            <!-- RibbonBar ApplicationMenu (Context Menu) -->
+            <!--<ControlId>appMenuItemNEW</ControlId>-->
+              <!--<ControlId>appMenuItemNEWDOC</ControlId>-->
+              <!--<ControlId>appMenuItemNEWCASE</ControlId>-->
+            <!--<ControlId>appMenuItemCOPY</ControlId>-->
+            <ControlId>appMenuItemPRINT</ControlId>
+            <!--<ControlId>appMenuItemRECYCLEBIN</ControlId>-->
+            <!--<ControlId>appMenuItemREFRESHTREEVIEW</ControlId>-->
+            <!--<ControlId>appMenuItemADMINISTRATIVETOOLS</ControlId>-->
+            <!--<ControlId>appMenuItemOUTOFOFFICE</ControlId>-->
+            <!--<ControlId>appMenuItemDOWNLOADGADGET</ControlId>-->
+            
+            <!-- RibbonBar -->
+            
+            <!-- Tab HOME -->
+            <!--<ControlId>theRibbonTabHOME</ControlId>-->
+              <!--<ControlId>theRibbonGroupSEARCH</ControlId>-->
+                <!--<ControlId>btnSEARCH</ControlId>-->
+                  <!--<ControlId>btnSearchNEWSEARCH</ControlId>-->
+                  <!--<ControlId>btnSearchNEWCROSSCATEGORYSEARCH</ControlId>-->
+                <!--<ControlId>btnOpenSearch</ControlId>-->
+              <!--<ControlId>theRibbonGroupFULLTEXT</ControlId>-->
+                <!--<ControlId>txtbxQuickSearch</ControlId>-->
+                <!--<ControlId>cbxDocumentContent</ControlId>-->
+                <!--<ControlId>cbxIndexData</ControlId>-->
+                <!--<ControlId>btnFullTextADVANCEDSEARCH</ControlId>-->
+              <!--<ControlId>theRibbonGroupHITLIST</ControlId>-->
+                <!--<ControlId>btnHitlistMODE</ControlId>-->
+                <!--<ControlId>btnHitlistREFRESH</ControlId>-->
+                <!--<ControlId>btnHitlistPRINT</ControlId>-->
+                <!--<ControlId>btnHitlistCOPY</ControlId>-->
+              <!--<ControlId>theRibbonGroupDOCUMENTS</ControlId>-->
+                <!--<ControlId>btnDocumentsTEMPLATES</ControlId>-->
+                <!--<ControlId>btnDocumentsVIEW</ControlId>-->
+                <!--<ControlId>btnDocumentsPRINT</ControlId>-->
+                <!--<ControlId>btnDocumentsINDEXDATA</ControlId>-->
+                <!--<ControlId>btnDocumentsEXPORT</ControlId>-->
+                  <!--<ControlId>btnDocumentsExportEXPORT</ControlId>-->
+                  <!--<ControlId>btnDocumentsExportSEND</ControlId>-->
+                <!--<ControlId>btnDocumentsLINKS</ControlId>-->
+                <!--<ControlId>btnDocumentsSECURITY</ControlId>-->
+                <!--<ControlId>btnDocumentsHISTORY</ControlId>-->
+                <!--<ControlId>btnDocumentsDELETE</ControlId>-->
+              <!--<ControlId>theRibbonGroupPROCESS</ControlId>-->
+                <!--<ControlId>btnProcessNEWTASK</ControlId>-->
+                <!--<ControlId>btnProcessSTART</ControlId>-->
+                <!--<ControlId>btnProcessLINKTO</ControlId>-->
+            
+            <!-- Tab WORKFLOW -->
+            <!--<ControlId>theRibbonTabWORKFLOW</ControlId>-->
+              <!--<ControlId>theRibbonGroupVIEWS</ControlId>-->
+                <!--<ControlId>btnViewsMYINSTANCES</ControlId>-->
+                <!--<ControlId>btnViewsALLINSTANCES</ControlId>-->
+                <!--<ControlId>btnViewsCONFIGURE</ControlId>-->
+              <!--<ControlId>theRibbonGroupINSTANCES</ControlId>-->
+                <!--<ControlId>btnInstancesOPEN</ControlId>-->
+                <!--<ControlId>btnInstancesHISTORY</ControlId>-->
+                <!--<ControlId>btnInstancesDELEGATE</ControlId>-->
+                <!--<ControlId>btnInstancesCLEARERROR</ControlId>-->
+                <!--<ControlId>btnInstancesCLAIM</ControlId>-->
+                <!--<ControlId>btnInstancesUNCLAIM</ControlId>-->
+                <!--<ControlId>btnInstancesDELETE</ControlId>-->
+            
+            <!-- Tab VIEW -->
+            <!--<ControlId>theRibbonTabVIEW</ControlId>-->
+              <!--<ControlId>theRibbonGroupVIEW</ControlId>-->
+                <!--<ControlId>cbxNavigation</ControlId>-->
+                <!--<ControlId>cbxAdditionalInfo</ControlId>-->
+              <!--<ControlId>theRibbonGroupVIEWERCLOSE</ControlId>-->
+                <!--<ControlId>btnViewCLOSE</ControlId>-->
+          
+          </HideList>
+          <Tab id="theRibbonTabHOME">
+            <Group id="Therefore.GroupManButton">
+              <Label resid="Therefore.GroupManButton.Label"/>
+              <Control xsi:type="the:Button" id="Therefore.ButtonToggle" disabled="false">
+                <Label resid="Therefore.ButtonToggle.Label"/>
+                <Tooltip resid="Therefore.ButtonToggle.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>buttonToggleClick</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="the:Button" id="Therefore.ButtonToToggle" disabled="true">
+                <Label resid="Therefore.ButtonToToggle.Label"/>
+                <Tooltip resid="Therefore.ButtonToToggle.Tooltip"/>
+                <Icon>
+                  <bt:Image size="32" resid="Therefore.Button.Image"/>
+                  <bt:ImageDisabled size="32" resid="Therefore.Button.ImageDisabled"/>
+                </Icon>
+                <Action xsi:type="the:ExecuteFunction">
+                  <FunctionName>buttonClickMe</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </Tab>
+        </ExtensionPoint>
+      </DesktopFormFactor>
+    </Host>
+  </Hosts>
+  <Resources>
+    <bt:Images>
+      <bt:Image id="Therefore.Button.Image" DefaultValue="/TWA/Client/Images/ribbon_workflow_instance_process_32.png" />
+      <bt:Image id="Therefore.Button.ImageDisabled" DefaultValue="/TWA/Client/Images/ribbon_disabled_workflow_instance_process_32.png" />
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="Therefore.FunctionFile.Url" DefaultValue="/TWA/Client/AddIn/TWA/73577357-abcd-7357-ffff-735773570003/FunctionFile.html" />
+    </bt:Urls>
+    <bt:ShortStrings>
+      <bt:String id="Therefore.GroupManButton.Label" DefaultValue="Manipulate Buttons" />
+      <bt:String id="Therefore.ButtonToggle.Label" DefaultValue="Toggle" />
+      <bt:String id="Therefore.ButtonToToggle.Label" DefaultValue="Click Me" />
+    </bt:ShortStrings>
+    <bt:LongStrings>
+      <bt:String id="Therefore.ButtonToggle.Tooltip" DefaultValue="Toggle Tooltip" />
+      <bt:String id="Therefore.ButtonToToggle.Tooltip" DefaultValue="Click Me Tooltip" />
+    </bt:LongStrings>
+  </Resources>
+</the:ThereforeAddIn>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="Therefore.Samples.Translation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Therefore.Samples"
+        mc:Ignorable="d"
+        Title="Translation" MinHeight="400" MinWidth="500" Height="400" Width="500" ShowInTaskbar="False">
+    <Grid Name="LayoutRoot">
+
+        <DataGrid AutoGenerateColumns="false" Margin="0,25,0,40" Name="dg_translation" MinWidth="280"
+                  ItemsSource = "{Binding Translations}"  GridLinesVisibility="None" Loaded="dg_translation_Loaded"
+                  SelectionMode="Single" SelectionUnit="Cell" CanUserReorderColumns="False" CanUserResizeColumns="true" CanUserResizeRows="false" IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ItemType}" Header="Object" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="btn_close" IsCancel="True" Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="23" Width="75"/>
+        <Button Name="btn_save" IsDefault="True" Content="Save" Click="btn_save_Click" HorizontalAlignment="Right" Margin="0,0,100,10" VerticalAlignment="Bottom" Height="23" Width="75"/>
+        <Button Name="btn_addlang" IsDefault="True" Content="Add Language" Click="btn_addlang_Click" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="23" Width="100"/>
+        <Button Name="btn_deletelang" IsDefault="True" Content="Delete Language" Click="btn_deletelang_Click" HorizontalAlignment="Left" Margin="120,0,0,10" VerticalAlignment="Bottom" Height="23" Width="100"/>
+    </Grid>
+</Window>

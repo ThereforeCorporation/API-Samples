@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="//cdn.jsdelivr.net/bluebird/3.4.5/bluebird.js"></script>
+    <script src="[[THEJSADDINPATH]]"></script>
+    <script>
+        function promisify(action) {
+            var args = arguments;
+            return new Promise(function (resolve, reject) {
+                var callback = function (result) {
+					if (result.status == "failed") {
+                        reject(new Error(result.error));
+                    }
+                    else {
+                        resolve(result);
+                    }
+                };
+
+                var params = [];
+                if (args[1]) {
+                    params = Array.prototype.slice.call(args[1]);
+                }
+                params.push(callback);
+
+                action.apply(this, params);
+            });
+        };
+		
+        var getCurrentObjectInfoAsync = function () {
+            return promisify(Therefore.context.viewer.getCurrentObjectInfo);
+        }
+
+        var callRequestAsync = function () {
+            return promisify(Therefore.context.xmlWebService.callRequest, arguments);
+        }
+
+		function getCurrentObjectFileFromXmlWebService(args) {			
+			var urlXmlService = '[[URLXMLWEBSERVICE]]';
+			
+			var paramGetDocument = {
+				'method': "GetDocument",
+				'parameters': {
+					'IsStreamsInfoAndDataNeeded': true
+				}
+			}
+				
+			getCurrentObjectInfoAsync()
+                .then(function (result) {
+					if(result.docno == '' && result.caseno == '' && result.taskno == '' && result.instanceno == '')
+						return Promise.reject(new Error("current object info missing"));
+					
+					if (result.docno == '')
+						return Promise.reject(new Error("document number is empty"));
+					
+					var reqParams = [];
+					var doc = result.docno;
+					var docNo = doc.split(".")[0];
+					var _paramGetDocument = JSON.parse(JSON.stringify(paramGetDocument));
+					_paramGetDocument.parameters.DocNo = +docNo;
+					
+					reqParams.push({
+						"url": urlXmlService,
+						"method": _paramGetDocument.method,
+						"parameters": JSON.parse(JSON.stringify(_paramGetDocument.parameters))
+					});
+					
+					return Promise.mapSeries(
+						reqParams,
+						function(param) {
+							return callRequestAsync(param.url, param.method, param.parameters);
+						}
+					);
+                })
+				.then(function (result){
+					console.log("Got result from " + paramGetDocument.method);
+					console.log(result);
+					
+					var alertOutput = [];
+					var kbSizeSum = 0;
+					for (var i = 0; i < result.length; i++) {
+						var streamInfoArray = result[i].StreamsInfo;
+						alertOutput.push(
+							"--------------------------------",
+							"\r\n",
+							"Document Number: " + result[i].DocNo,
+							"\r\n"
+						);
+						for (var j = 0; j < streamInfoArray.length; j++) {
+							var kbSize = Math.round(streamInfoArray[j].StreamData.length / 1024);
+							kbSizeSum += kbSize;
+							alertOutput.push(
+								"    Downloaded Document '" + streamInfoArray[j].FileName + "'",
+								"\r\n",
+								"    with Size: " + kbSize + " KB",
+								"\r\n"
+							);
+						}
+					}
+					alertOutput.push(
+						"--------------------------------",
+						"\r\n",
+						"Total download size: " + kbSizeSum + " KB"
+					);
+					alert(alertOutput.join(""));
+				})
+				.catch(function (e) {
+                    console.log("error: " + e.message);
+                    console.log(e);
+					alert("Got error from " + paramGetDocument.method + "\r\nerror: " + e.message);
+                });
+        }
+    </script>
+</head>
+<body>
+    body of function files wont be displayed
+</body>
+</html>

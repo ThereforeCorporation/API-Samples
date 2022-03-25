@@ -1,0 +1,2 @@
+D:\Product\Therefore\SDK\Samples CSharp\Advanced\TableDataType\obj\Debug\Interop.Therefore.API.dll
+D:\Product\Therefore\SDK\Samples CSharp\Advanced\TableDataType\obj\Debug\TableDataType.csproj.ResolveComReference.cache

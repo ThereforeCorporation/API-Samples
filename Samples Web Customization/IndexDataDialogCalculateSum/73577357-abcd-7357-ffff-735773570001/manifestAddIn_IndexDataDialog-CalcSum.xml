@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<the:ThereforeAddIn
+  xmlns:the="http://schemas.therefore.net/thereforeaddinmanifest/0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.therefore.net/thereforebasictypes/0.1">
+  <Id>73577357-abcd-7357-ffff-735773570001</Id>
+  <Version>0.1</Version>
+  <ProviderName>Therefore</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Test IndexDataDialog-CalcSum" />
+  <Description DefaultValue="The Description" />
+  <IconUrl DefaultValue="/TWA/Client/Images/therefore_32.png" />
+  <Hosts>
+    <Host xsi:type="the:Navigator">
+      <DesktopFormFactor>
+        <FunctionFile resid="Therefore.FunctionFile.Url"/>
+        <ExtensionPoint xsi:type="the:CategoryIndexDataDialog" CategoryNo="[[CategoryNumber]]">
+          <EventTriggers>
+            <Event xsi:type="the:OnKeyDown">
+              <Action xsi:type="the:ExecuteFunction">
+                <FunctionName>calcFunctionTableSumVal</FunctionName>
+              </Action>
+            </Event>
+            <Event xsi:type="the:OnInit">
+              <Action xsi:type="the:ExecuteFunction">
+                <FunctionName>calcFunctionTableSumVal</FunctionName>
+              </Action>
+            </Event>
+          </EventTriggers>
+        </ExtensionPoint>
+      </DesktopFormFactor>
+    </Host>
+  </Hosts>
+  <Resources>
+    <bt:Urls>
+      <bt:Url id="Therefore.FunctionFile.Url" DefaultValue="[[UrlFunctionFile]]" />
+    </bt:Urls>
+  </Resources>
+</the:ThereforeAddIn>

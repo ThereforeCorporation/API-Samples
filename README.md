@@ -1,5 +1,5 @@
-# API Sample
-Many API Samples for working with Therefore.<br>
+# API Samples
+Many API/WebAPI Samples for working with Therefore.<br>
 Please also refer to our API Documentation.
 
 # How to contribute

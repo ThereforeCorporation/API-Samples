@@ -63,3 +63,8 @@ We welcome contributions from everyone — whether it's fixing a typo, suggestin
 6. **Create a Pull Request**
    - GitHub will prompt you to open a pull request.
 
+---
+
+### 🙋 Need Help?
+If you’re unsure or have questions, feel free to open an issue with us.
+
